@@ -44,7 +44,7 @@ export const EyeTestimonialsSection = ({
             ))
           ) : testimonials.length > 0 ? (
             // Dynamic testimonials from database
-            testimonials.slice(0, 3).map(testimonial => (
+            testimonials.slice(0, 3).map((testimonial, index) => (
               <Testimonial 
                 key={testimonial.id}
                 initial={testimonial.initial} 

@@ -117,7 +117,7 @@ const EyeCareDoctor = () => {
                 <div className="md:col-span-7 order-1 md:order-2" data-aos="fade-left" data-aos-duration="900">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
                     {galleryLoading ? (
-                      [1, 2].map((i) => (
+                      [1, 2].map((i, index) => (
                         <div key={i} className="animate-pulse">
                           <div className="h-48 md:h-64 bg-gray-200 rounded-lg mb-2"></div>
                           <div className="p-3 md:p-4 bg-white">
@@ -127,7 +127,7 @@ const EyeCareDoctor = () => {
                         </div>
                       ))
                     ) : galleryItems?.length >= 2 ? (
-                      galleryItems.slice(0, 2).map((item) => (
+                      galleryItems.slice(0, 2).map((item, index) => (
                         <div key={item.id} className="overflow-hidden rounded-lg shadow-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
                           <img 
                             src={item.image_url} 
@@ -179,7 +179,7 @@ const EyeCareDoctor = () => {
               
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
                 {galleryLoading ? (
-                  [1, 2, 3].map((i) => (
+                  [1, 2, 3].map((i, index) => (
                     <div key={i} className="animate-pulse">
                       <div className="h-64 bg-gray-200 rounded-lg mb-2"></div>
                       <div className="h-6 bg-gray-200 w-3/4 rounded mb-2"></div>
@@ -187,7 +187,7 @@ const EyeCareDoctor = () => {
                     </div>
                   ))
                 ) : galleryItems?.length >= 5 ? (
-                  galleryItems.slice(2, 5).map((item) => (
+                  galleryItems.slice(2, 5).map((item, index) => (
                     <div key={item.id} className="overflow-hidden rounded-lg shadow-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
                       <img 
                         src={item.image_url} 
@@ -247,7 +247,7 @@ const EyeCareDoctor = () => {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 md:gap-10">
                 {qualificationsLoading ? (
-                  [1, 2, 3, 4].map((i) => (
+                  [1, 2, 3, 4].map((i, index) => (
                     <div key={i} className="animate-pulse bg-white rounded-lg p-4 sm:p-6 shadow-md">
                       <div className="h-4 sm:h-5 bg-gray-200 rounded w-1/2 mb-3 sm:mb-4"></div>
                       <div className="h-3 sm:h-4 bg-gray-200 rounded w-3/4 mb-2 sm:mb-3"></div>
@@ -255,7 +255,7 @@ const EyeCareDoctor = () => {
                     </div>
                   ))
                 ) : (
-                  qualifications?.map((qualification: any) => (
+                  qualifications?.map((qualification: any, index) => (
                     <div key={qualification.id} className="glass-card rounded-xl p-4 sm:p-5 md:p-6 flex items-start gap-3 sm:gap-4 hover:shadow-md hover:-translate-y-1 transition-all duration-300" 
                       data-aos="zoom-in" 
                       data-aos-delay={100 * (index + 1)}
@@ -407,8 +407,8 @@ const EyeCareDoctor = () => {
                     <div className="h-4 bg-gray-200 w-full rounded"></div>
                     <div className="h-4 bg-gray-200 w-5/6 rounded"></div>
                     <div className="pl-5 space-y-2">
-                      {[...Array(5)].map((_, i) => (
-                        <div key={i} className="h-4 bg-gray-100 w-5/6 rounded"></div>
+                      {[...Array(5)].map((_, index) => (
+                        <div key={index} className="h-4 bg-gray-100 w-5/6 rounded"></div>
                       ))}
                     </div>
                     <div className="h-4 bg-gray-200 w-full rounded"></div>
@@ -472,8 +472,8 @@ const EyeCareDoctor = () => {
               
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
                 {testimonialsLoading ? (
-                  [...Array(3)].map((_, i) => (
-                    <div key={i} className="glass-card rounded-xl p-6 animate-pulse">
+                  [...Array(3)].map((_, index) => (
+                    <div key={index} className="glass-card rounded-xl p-6 animate-pulse">
                       <div className="h-6 w-6 bg-gray-200 rounded-full mx-auto mb-2"></div>
                       <div className="h-4 bg-gray-200 w-3/4 mx-auto mb-4 rounded"></div>
                       <div className="space-y-2">

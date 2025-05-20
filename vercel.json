@@ -1,7 +1,7 @@
-
 {
   "routes": [
     { "handle": "filesystem" },
+    { "src": "/eyecare/doctor", "dest": "/index.html" },
     { "src": "/.*", "dest": "/index.html" }
   ]
 }
