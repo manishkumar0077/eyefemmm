@@ -39,6 +39,9 @@ const ExportData = lazy(() => import('@/pages/admin/ExportData'));
 import { AuthProvider } from '@/hooks/useAuth';
 import EditContent from "./pages/admin/EditContent";
 
+// WhatsApp Widget
+import WhatsAppWidget from "@/components/WhatsAppWidget";
+
 // Initialize AOS
 AOS.init({
   duration: 800,
@@ -99,6 +102,7 @@ function App() {
           <Route path="*" element={<NotFound />} />
         </Routes>
         <Toaster />
+        <WhatsAppWidget />
       </div>
     </AuthProvider>
   );

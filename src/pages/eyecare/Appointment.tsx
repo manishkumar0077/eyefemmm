@@ -393,14 +393,12 @@ const EyeCareAppointment = () => {
                 your insurance coverage before your appointment.
               </p>
               
-              <InsuranceProviders />
+              <InsuranceProviders variant="eyecare" />
             </div>
           </section>
         </main>
 
         <Footer />
-        {/* Elfsight WhatsApp Chat | Untitled WhatsApp Chat */}
-        <div className="elfsight-app-a33bc770-938d-4a29-a90b-1d1514e16817" data-elfsight-app-lazy></div>
       </div>
     </PageTransition>;
 };

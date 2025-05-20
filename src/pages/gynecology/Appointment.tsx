@@ -559,8 +559,6 @@ const GynecologyAppointment = () => {
         </main>
 
         <Footer />
-        {/* Elfsight WhatsApp Chat | Untitled WhatsApp Chat */}
-        <div className="elfsight-app-f5987c20-7de0-4b19-a688-ad23bc2c6457" data-elfsight-app-lazy></div>
       </div>
     </PageTransition>
   );
