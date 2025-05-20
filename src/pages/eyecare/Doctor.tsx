@@ -127,7 +127,7 @@ const EyeCareDoctor = () => {
                         </div>
                       ))
                     ) : galleryItems?.length >= 2 ? (
-                      galleryItems.slice(0, 2).map((item) => (
+                      galleryItems.slice(0, 2).map((item, index) => (
                         <div key={item.id} className="overflow-hidden rounded-lg shadow-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
                           <img 
                             src={item.image_url} 
@@ -187,7 +187,7 @@ const EyeCareDoctor = () => {
                     </div>
                   ))
                 ) : galleryItems?.length >= 5 ? (
-                  galleryItems.slice(2, 5).map((item) => (
+                  galleryItems.slice(2, 5).map((item, index) => (
                     <div key={item.id} className="overflow-hidden rounded-lg shadow-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
                       <img 
                         src={item.image_url} 
@@ -255,7 +255,7 @@ const EyeCareDoctor = () => {
                     </div>
                   ))
                 ) : (
-                  qualifications?.map((qualification: any) => (
+                  qualifications?.map((qualification: any, index) => (
                     <div key={qualification.id} className="glass-card rounded-xl p-4 sm:p-5 md:p-6 flex items-start gap-3 sm:gap-4 hover:shadow-md hover:-translate-y-1 transition-all duration-300" 
                       data-aos="zoom-in" 
                       data-aos-delay={100 * (index + 1)}
