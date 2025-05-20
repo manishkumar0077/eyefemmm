@@ -1,0 +1,20 @@
+-- This is a reference file only. DO NOT RUN THIS MIGRATION.
+-- The user has already executed the SQL commands manually.
+
+CREATE TABLE csm_doctors_gyne (
+  id SERIAL PRIMARY KEY,
+  name TEXT NOT NULL,
+  title TEXT,
+  description TEXT,
+  created_at TIMESTAMP DEFAULT NOW()
+);
+
+INSERT INTO csm_doctors_gyne (
+  name,
+  title,
+  description
+) VALUES (
+  'Dr. Nisha Bhatnagar',
+  'Senior Gynecologist & Fertility Specialist',
+  'With over 15 years of experience, Dr. Nisha Bhatnagar is a renowned gynecologist specializing in women''s health, fertility treatments, and reproductive medicine.'
+); 

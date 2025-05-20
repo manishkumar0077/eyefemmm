@@ -1,0 +1,258 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+
+    --radius: 1rem;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    -webkit-tap-highlight-color: transparent; /* Remove tap highlight on mobile */
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-white/40 backdrop-blur-lg border border-white/20 shadow-lg transition-all;
+  }
+  
+  .mac-btn {
+    @apply rounded-full px-4 sm:px-6 py-2 sm:py-3 font-semibold transition-all shadow-md hover:shadow-lg hover:scale-105;
+  }
+  
+  .eyecare-btn {
+    @apply bg-gradient-to-r from-eyecare-light to-eyecare text-white;
+  }
+  
+  .gynecology-btn {
+    @apply bg-gradient-to-r from-gynecology-light to-gynecology text-white;
+  }
+  
+  .section-title {
+    @apply text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6;
+  }
+  
+  .page-container {
+    @apply min-h-screen w-full max-w-7xl mx-auto px-4 py-6 sm:py-8;
+  }
+  
+  .responsive-padding {
+    @apply px-4 py-6 sm:px-6 sm:py-8 md:px-8 md:py-12;
+  }
+  
+  .responsive-grid {
+    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6;
+  }
+  
+  .responsive-text {
+    @apply text-base sm:text-lg md:text-xl;
+  }
+  
+  .responsive-heading {
+    @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold;
+  }
+  
+  .touch-target {
+    @apply min-h-[44px] min-w-[44px];
+  }
+  
+  .mobile-full-height {
+    min-height: calc(100vh - 80px);
+    height: -webkit-fill-available;
+  }
+  
+  /* Logo consistency - Updated to ensure consistent sizing */
+  .site-logo {
+    @apply h-14 w-auto object-contain;
+  }
+  
+  /* Logo container to maintain consistent layout */
+  .logo-container {
+    @apply flex items-center h-14 min-h-[56px] overflow-hidden;
+  }
+  
+  /* Navbar spacing for logo */
+  .logo-navbar {
+    @apply py-3 flex items-center;
+  }
+  
+  /* Add more responsive utility classes */
+  .responsive-card {
+    @apply p-4 sm:p-6 rounded-lg shadow-md hover:shadow-lg transition-all;
+  }
+  
+  .responsive-iframe {
+    @apply w-full aspect-video rounded-lg shadow-md border-2 border-opacity-20 hover:border-opacity-50 transition-all;
+  }
+  
+  .responsive-map {
+    @apply w-full h-[250px] sm:h-[350px] md:h-[450px] rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all border-2 border-opacity-20 hover:border-opacity-50;
+  }
+  
+  .responsive-container {
+    @apply w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl mx-auto;
+  }
+  
+  .responsive-section {
+    @apply py-8 sm:py-12 md:py-16 lg:py-20;
+  }
+
+  /* Specific device modifications */
+  .small-device-stack {
+    @apply flex flex-col sm:flex-row;
+  }
+  
+  .small-device-center {
+    @apply flex flex-col items-center text-center sm:items-start sm:text-left;
+  }
+  
+  .small-device-full-width {
+    @apply w-full sm:w-auto;
+  }
+}
+
+/* Mobile-specific adjustments */
+@media (max-width: 640px) {
+  .hide-mobile {
+    display: none !important;
+  }
+  
+  button, a, input[type="button"], input[type="submit"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  .vh-fix {
+    height: -webkit-fill-available;
+  }
+  
+  /* Fix for navigation on small screens */
+  .small-screen-nav {
+    padding: 0.5rem !important;
+    gap: 0.5rem !important;
+  }
+  
+  .small-screen-nav-text {
+    font-size: 0.875rem !important;
+  }
+}
+
+/* Tablet-specific adjustments */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .tablet-optimized-padding {
+    padding-left: 2rem !important;
+    padding-right: 2rem !important;
+  }
+  
+  .tablet-optimized-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+/* iOS Safari specific fixes for height */
+@supports (-webkit-touch-callout: none) {
+  .h-screen {
+    height: -webkit-fill-available;
+  }
+}
+
+/* Adding print styles for better experience when printing */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  body {
+    font-size: 12pt;
+    color: #000;
+    background: #fff;
+  }
+  
+  .print-break-after {
+    page-break-after: always;
+  }
+}

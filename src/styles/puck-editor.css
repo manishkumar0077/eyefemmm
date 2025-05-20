@@ -1,0 +1,274 @@
+
+/* Core editor styling */
+.puck-editor-container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.puck-editor-container [class*='puck-root'] {
+  height: 100vh;
+}
+
+/* Editor header */
+.puck-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  background-color: #f9fafb;
+  border-bottom: 1px solid #e5e7eb;
+  z-index: 50;
+}
+
+.puck-header h2 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #111827;
+  margin: 0;
+}
+
+/* Header actions */
+.puck-header-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+/* Buttons */
+.preview-button,
+.cancel-button,
+.save-button {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  border-radius: 0.25rem;
+  font-weight: 500;
+  transition: background-color 0.2s;
+  cursor: pointer;
+}
+
+.preview-button {
+  background-color: #f3f4f6;
+  color: #4b5563;
+  border: 1px solid #d1d5db;
+}
+
+.preview-button:hover {
+  background-color: #e5e7eb;
+}
+
+.cancel-button {
+  background-color: #f3f4f6;
+  color: #4b5563;
+  border: 1px solid #d1d5db;
+}
+
+.cancel-button:hover {
+  background-color: #e5e7eb;
+}
+
+.save-button {
+  background-color: #4f46e5;
+  color: white;
+  border: 1px solid #4338ca;
+}
+
+.save-button:hover {
+  background-color: #4338ca;
+}
+
+.cancel-button:disabled,
+.save-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Block styles */
+.puck-heading {
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.puck-paragraph {
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+.puck-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.25rem;
+  margin-bottom: 1rem;
+}
+
+/* Button variants */
+.puck-button {
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  font-weight: 500;
+  cursor: pointer;
+  display: inline-block;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.puck-button-default {
+  background-color: #f3f4f6;
+  color: #1f2937;
+  border: 1px solid #d1d5db;
+}
+
+.puck-button-primary {
+  background-color: #4f46e5;
+  color: white;
+  border: 1px solid #4338ca;
+}
+
+.puck-button-secondary {
+  background-color: #7c3aed;
+  color: white;
+  border: 1px solid #6d28d9;
+}
+
+.puck-button-outline {
+  background-color: transparent;
+  color: #4f46e5;
+  border: 1px solid #4f46e5;
+}
+
+/* Custom Puck overrides to ensure proper preview display */
+[class*='puck-root'] {
+  --puck-color-white: #fff;
+  --puck-color-light-gray: #f9fafb;
+  --puck-color-gray: #f3f4f6;
+  --puck-color-dark-gray: #9ca3af;
+  --puck-color-black: #111827;
+  --puck-color-primary: #4f46e5;
+  --puck-color-danger: #ef4444;
+  --puck-shadow-medium: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+[class*='puck-root'] [class*='puck-drop-zone'] {
+  min-height: 100px;
+  border: 2px dashed var(--puck-color-dark-gray);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--puck-color-light-gray);
+  margin: 1rem 0;
+}
+
+[class*='puck-root'] [class*='puck-field-label'] {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--puck-color-black);
+  margin-bottom: 0.5rem;
+}
+
+/* Make sure the iframe preview takes up proper space */
+[class*='puck-preview'] {
+  flex: 1;
+  overflow: auto;
+  background-color: white;
+}
+
+/* Center the content area in the middle of the screen */
+[class*='puck-preview-responsive'] {
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+/* Ensure the edit panel has enough space */
+[class*='puck-root'] [class*='puck-plugin-sidebar'] {
+  width: 360px;
+  border-left: 1px solid #e5e7eb;
+}
+
+/* Ensure proper styling when blocks are being dragged */
+[class*='puck-drop-zone-highlight'] {
+  background-color: rgba(79, 70, 229, 0.1) !important;
+  border-color: #4f46e5 !important; 
+}
+
+/* Canvas container styling to ensure visibility */
+.canvas-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  overflow: auto;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+/* Ensure content is properly centered in preview mode */
+[class*='puck-preview'] .canvas-container {
+  margin: 0 auto;
+  max-width: 1280px;
+  width: 100%;
+}
+
+/* Styling for preview mode */
+.puck-editor-preview-mode [class*='puck-plugin-sidebar'],
+.puck-editor-preview-mode [class*='puck-plugin-fields'],
+.puck-editor-preview-mode [class*='puck-component-picker'] {
+  display: none !important;
+}
+
+.puck-editor-preview-mode [class*='puck-preview'] {
+  width: 100% !important;
+}
+
+/* Ensure the drag & drop interface works correctly */
+[class*='puck-root'] [class*='puck-drop-zone'] {
+  transition: all 0.2s ease;
+}
+
+/* Ensure responsive mode works properly */
+[class*='puck-preview-frame'] {
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+/* Styles for the iframe live preview */
+.preview-iframe-container {
+  width: 100%;
+  height: calc(100vh - 4rem);
+  overflow: auto;
+  background-color: #f9fafb;
+}
+
+.preview-iframe-container iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* Loading indicator for iframe */
+.loading-indicator {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+}
+
+/* Preview header styling */
+.preview-header {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 50;
+  background-color: white;
+  border-bottom: 1px solid #e5e7eb;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

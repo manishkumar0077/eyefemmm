@@ -1,0 +1,173 @@
+import React from "react";
+import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import EyeCareNavbar from "@/components/EyeCareNavbar";
+import PageTransition from "@/components/PageTransition";
+import Footer from "@/components/Footer";
+import { useEyeCareTabServicesLatest } from '@/hooks/useEyeCareTabServicesLatest';
+import { useEffect, useState } from "react";
+import EyeTestimonialsSection from '@/components/EyeTestimonialsSection';
+import { Loader2 } from "lucide-react";
+
+const EyeCareConditions: React.FC = () => {
+  // Use our new hook to get the services data
+  const { sections, isLoading, activeSection, setActiveSection } = useEyeCareTabServicesLatest();
+  const [activeSectionId, setActiveSectionId] = useState<string | null>(null);
+  
+  // Set active section when data loads
+  useEffect(() => {
+    if (!isLoading && sections.length > 0) {
+      // Set the first section as active if no active section is set
+      if (!activeSectionId) {
+        setActiveSectionId(sections[0].id);
+        setActiveSection(sections[0].id);
+      }
+    }
+  }, [sections, isLoading, activeSectionId, setActiveSection]);
+  
+  // Update active section id when activeSection changes
+  useEffect(() => {
+    if (activeSection) {
+      setActiveSectionId(activeSection);
+    }
+  }, [activeSection]);
+
+  const handleImageError = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
+    console.log("Image failed to load:", e.currentTarget.src);
+    e.currentTarget.src = "/lovable-uploads/default-image.png";
+  };
+
+  return (
+    <PageTransition>
+      <div className="min-h-screen flex flex-col">
+        <EyeCareNavbar />
+        <main className="flex-grow pt-20">
+          {/* Hero Section */}
+          <section className="bg-gradient-eyecare text-white py-16 md:py-24">
+            <div className="container mx-auto px-4 max-w-6xl">
+              <div className="text-center max-w-4xl mx-auto" data-aos="fade-up">
+                <h1 className="text-4xl md:text-5xl font-bold mb-6">
+                  Eye Care Services & Treatments
+                </h1>
+                <p className="text-xl mb-8 text-white/90">
+                  Comprehensive ophthalmology services, clinical eye care, and advanced surgical procedures designed to maintain and improve your vision.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          {/* Services Tabs Section */}
+          <section className="py-16 px-4">
+            <div className="container mx-auto max-w-6xl">
+              {isLoading ? (
+                <div className="flex items-center justify-center h-64">
+                  <Loader2 className="h-8 w-8 animate-spin text-eyecare" />
+                  <span className="ml-2">Loading services...</span>
+                </div>
+              ) : sections.length === 0 ? (
+                <div className="text-center py-16">
+                  <h3 className="text-xl">No eye care services found.</h3>
+                </div>
+              ) : (
+                <Tabs value={activeSectionId || ''} onValueChange={setActiveSectionId} className="w-full" data-aos="fade-up">
+                  <div className="mb-8">
+                    <TabsList className="w-full overflow-x-auto flex flex-wrap justify-center gap-2 p-2 bg-gray-100 rounded-lg">
+                      {sections.map(section => (
+                        <TabsTrigger 
+                          key={section.id} 
+                          value={section.id} 
+                          className="data-[state=active]:bg-eyecare data-[state=active]:text-white"
+                          onClick={() => setActiveSection(section.id)}
+                        >
+                          {section.title}
+                        </TabsTrigger>
+                      ))}
+                    </TabsList>
+                  </div>
+
+                {/* Dynamic Content Tabs */}
+                {sections.map(section => (
+                  <TabsContent key={section.id} value={section.id} className="mt-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                      <div>
+                        <h2 className="text-3xl font-bold mb-6 text-eyecare">{section.title}</h2>
+                        <div className="space-y-6">
+                          {section.subsections && section.subsections.map(subsection => (
+                            <div key={subsection.id}>
+                              <h3 className="text-xl font-semibold mb-2">{subsection.title}</h3>
+                              {subsection.description && (
+                                <p className="text-gray-700 mb-3">{subsection.description}</p>
+                              )}
+                              {subsection.items && subsection.items.length > 0 && (
+                                <ul className="list-disc pl-5 space-y-2 text-gray-700">
+                                  {subsection.items.map(item => (
+                                    <li key={item.id}>
+                                      {item.label && (
+                                        <span className="font-medium">{item.label}{item.description ? ':' : ''}</span>
+                                      )}
+                                      {item.description && (
+                                        <p>{item.description}</p>
+                                      )}
+                                    </li>
+                                  ))}
+                                </ul>
+                              )}
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                      {section.image_url && (
+                        <div className="rounded-xl overflow-hidden shadow-lg">
+                          <img 
+                            src={section.image_url} 
+                            alt={`${section.title} image`} 
+                            className="w-full h-full object-cover"
+                            onError={handleImageError}
+                          />
+                        </div>
+                      )}
+                    </div>
+                  </TabsContent>
+                ))}
+              </Tabs>
+              )}
+            </div>
+          </section>
+
+
+          {/* CTA Section */}
+          <section className="py-16 px-4 bg-gradient-eyecare text-white">
+            <div className="container mx-auto max-w-5xl text-center" data-aos="fade-up">
+              <h2 className="text-3xl md:text-4xl font-bold mb-6">
+                Ready to Improve Your Vision?
+              </h2>
+              <p className="text-xl mb-8 text-white/90 max-w-3xl mx-auto">
+                Schedule an appointment with our eye care specialists today and get on the path to better vision.
+              </p>
+              <div className="flex flex-col md:flex-row gap-4 justify-center">
+                <Link to="/eyecare/appointment">
+                  <Button className="mac-btn bg-white text-eyecare hover:bg-white/90 w-full md:w-auto">
+                    Book an Appointment
+                  </Button>
+                </Link>
+                <Link to="/eyecare/doctor">
+                  <Button variant="outline" className="mac-btn border-white text-white hover:bg-white/10 w-full md:w-auto">
+                    Meet Our Doctor
+                  </Button>
+                </Link>
+              </div>
+            </div>
+          </section>
+
+          {/* Patient Testimonials Section */}
+          <EyeTestimonialsSection />
+        </main>
+
+        <Footer />
+      </div>
+    </PageTransition>
+  );
+};
+
+export default EyeCareConditions;
